@@ -119,9 +119,31 @@ class _StudyPlannerHomeState extends State<StudyPlannerHome> {
                   final goal = _goals[index];
                   return Card(
                     child: ListTile(
-                      leading: const Icon(Icons.book),
-                      title: Text(goal.title),
+                      leading: Checkbox(
+                        value: goal.isCompleted,
+                        onChanged: (value) {
+                          setState(() {
+                            goal.isCompleted = value ?? false;
+                          });
+                        },
+                      ),
+                      title: Text(
+                        goal.title,
+                        style: TextStyle(
+                          decoration: goal.isCompleted
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
+                      ),
                       subtitle: Text(goal.hours),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          setState(() {
+                            _goals.removeAt(index);
+                          });
+                        },
+                      ),
                     ),
                   );
                 },
