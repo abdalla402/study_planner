@@ -16,10 +16,28 @@ void main(){
       );
     }
 
-  }
-  // STATIC: Home screen widget
-  class StudyPlannerHome extends StatelessWidget {
+  }// DYNAMIC: Data model for a study goal
+class StudyGoal {
+  String title;
+  String hours;
+  bool isCompleted;
+
+  StudyGoal({
+    required this.title,
+    required this.hours,
+    this.isCompleted = false,
+  });
+}
+
+// DYNAMIC: Stateful home screen widget
+class StudyPlannerHome extends StatefulWidget {
   const StudyPlannerHome({super.key});
+
+  @override
+  State<StudyPlannerHome> createState() => _StudyPlannerHomeState();
+}
+
+class _StudyPlannerHomeState extends State<StudyPlannerHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,48 +45,7 @@ void main(){
       appBar: AppBar(
         title: const Text('My Study Planner'),
       ),
-      // STATIC: Main body layout
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            // STATIC: Heading above the goals list
-            Text(
-              'My Study Goals',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            // STATIC: Three hard-coded goal cards
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.book),
-                title: Text('Mobile App Development'),
-                subtitle: Text('3 hours'),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.book),
-                title: Text('Network Security'),
-                subtitle: Text('2 hours'),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.book),
-                title: Text('Database Systems'),
-                subtitle: Text('4 hours'),
-              ),
-            ),
-          ],
-        ),
-    ),
-    // STATIC: Floating action button (does nothing yet)
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
+  
