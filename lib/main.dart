@@ -11,7 +11,7 @@ void main(){
     Widget build(BuildContext context){
       return MaterialApp(
        debugShowCheckedModeBanner:false,
-        title: 'My Study Planner'
+        title: 'My Study Planner',
         home: const StudyPlannerHome(),
       );
     }
@@ -27,6 +27,21 @@ void main(){
       appBar: AppBar(
         title: const Text('My Study Planner'),
       ),
+      // STATIC: Main body layout
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            // STATIC: Heading above the goals list
+            Text(
+              'My Study Goals',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+          ],
+        ),
+    ),
     );
   }
 }
