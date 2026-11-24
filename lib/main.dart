@@ -38,6 +38,12 @@ class StudyPlannerHome extends StatefulWidget {
 }
 
 class _StudyPlannerHomeState extends State<StudyPlannerHome> {
+  // DYNAMIC: List of study goals managed in state
+  final List<StudyGoal> _goals = [
+    StudyGoal(title: 'Mobile App Development', hours: '3 hours'),
+    StudyGoal(title: 'Network Security', hours: '2 hours'),
+    StudyGoal(title: 'Database Systems', hours: '4 hours'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
