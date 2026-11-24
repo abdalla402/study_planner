@@ -44,6 +44,56 @@ class _StudyPlannerHomeState extends State<StudyPlannerHome> {
     StudyGoal(title: 'Network Security', hours: '2 hours'),
     StudyGoal(title: 'Database Systems', hours: '4 hours'),
   ];
+  // DYNAMIC: Dialog to add a new study goal
+  void _showAddGoalDialog() {
+    final titleController = TextEditingController();
+    final hoursController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Add New Study Goal'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: const InputDecoration(labelText: 'Subject / Goal'),
+              ),
+              TextField(
+                controller: hoursController,
+                decoration: const InputDecoration(labelText: 'Duration (e.g. 2 hours)'),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (titleController.text.isNotEmpty &&
+                    hoursController.text.isNotEmpty) {
+                  setState(() {
+                    _goals.add(
+                      StudyGoal(
+                        title: titleController.text,
+                        hours: hoursController.text,
+                      ),
+                    );
+                  });
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +130,13 @@ class _StudyPlannerHomeState extends State<StudyPlannerHome> {
           ],
         ),
       ),
+      // DYNAMIC: Floating action button to trigger add dialog
+      floatingActionButton: FloatingActionButton(
+        onPressed: _showAddGoalDialog,
+        child: const Icon(Icons.add),
+      ),
     );
+
   }
 }
   
