@@ -51,6 +51,35 @@ class _StudyPlannerHomeState extends State<StudyPlannerHome> {
       appBar: AppBar(
         title: const Text('My Study Planner'),
       ),
+      // DYNAMIC: Body displaying the list of goals dynamically
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'My Study Goals',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _goals.length,
+                itemBuilder: (context, index) {
+                  final goal = _goals[index];
+                  return Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.book),
+                      title: Text(goal.title),
+                      subtitle: Text(goal.hours),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
