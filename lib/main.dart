@@ -39,6 +39,28 @@ void main(){
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
+            // STATIC: Three hard-coded goal cards
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.book),
+                title: Text('Mobile App Development'),
+                subtitle: Text('3 hours'),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.book),
+                title: Text('Network Security'),
+                subtitle: Text('2 hours'),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.book),
+                title: Text('Database Systems'),
+                subtitle: Text('4 hours'),
+              ),
+            ),
           ],
         ),
     ),
