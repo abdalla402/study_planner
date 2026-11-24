@@ -64,6 +64,11 @@ void main(){
           ],
         ),
     ),
+    // STATIC: Floating action button (does nothing yet)
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
